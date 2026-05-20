@@ -1,20 +1,97 @@
-# Multi-verze Rozcestník (Laravel)
+# dev-frame
 
-Tento projekt slouží jako centrální rozcestník pro správu a spouštění různých verzí aplikace.
+A lightweight Laravel package for hosting, versioning, and live-previewing multiple UI prototypes with a built-in device emulator (Desktop / Tablet / Mobile).
 
-## Co bylo vytvořeno
-- **Tailwind CSS**: Aplikace byla designově modernizována. Pro čtení Markdown obsahu byl přidán plugin `Typography`.
-- **HomeController (`app/Http/Controllers/HomeController.php`)**: Zajišťuje dynamické čtení adresářů s verzemi (`resources/views/versions`) a parsování Markdown souborů.
-- **Routy (`routes/web.php`)**: Dynamická catch-all routa (`/{version}`) a routy pro čtení dokumentace (`/doc/{file}`).
-- **Obalovací layout (Device Previewer)**: Speciální layout (`resources/views/layouts/device-preview.blade.php`), do kterého jsou verze zabaleny. Umožňuje přepínání zařízení (Desktop, Tablet, Mobil) pro testování responzivity přímo na lokálu přes iframe.
-- **Šablony**:
-  - `welcome.blade.php`: Zcela přepracovaná úvodní obrazovka s odkazy na verze a dokumentaci.
-  - `doc.blade.php`: Šablona pro zobrazení přeloženého Markdown obsahu.
-  - `versions/v1/index.blade.php`: Ukázková první verze.
+---
 
-## Zobrazení verzí (Device Preview)
-Po prokliku na verzi z rozcestníku se aplikace standardně otevře uvnitř **Device Previeweru**. Můžeš přepínat mezi zařízeními pomocí horní lišty. 
-Pokud potřebuješ čistou verzi bez tohoto obalu (například pro debugování nebo plný náhled), stačí kliknout na tlačítko vpravo nahoře "Otevřít čisté" nebo za URL přidat parametr `?preview=false`.
+## Features
 
-## Přidání nové verze
-Stačí vytvořit novou podsložku ve složce `resources/views/versions/` (např. `v2`) a do ní umístit soubor `index.blade.php`. Rozcestník ji na hlavní stránce okamžitě nabídne.
+- **Dashboard** — auto-generated list of all UI versions with links to documentation
+- **Device Preview** — view each version inside a simulated device frame (Desktop / Tablet / Mobile), switchable in real time
+- **Markdown viewer** — renders `README.md` and `DEVLOG.md` from the project root with clean typography
+- **Zero Vite config required** — ships a precompiled CSS file; no build step needed in the host app
+
+---
+
+## Requirements
+
+| Dependency | Version |
+|---|---|
+| PHP | `^8.2` |
+| Laravel | `11.x`, `12.x` or `13.x` |
+
+---
+
+## Installation
+
+### 1. Require the package
+
+```bash
+composer require mdcznet/dev-frame
+```
+
+Laravel's auto-discovery will register `DevFrameServiceProvider` automatically.
+
+### 2. Publish the CSS asset
+
+```bash
+php artisan vendor:publish --tag=dev-frame-assets
+```
+
+This copies `dist/dev-frame.css` to `public/vendor/dev-frame/dev-frame.css`.
+
+### 3. Done
+
+Open your app in the browser — the dashboard is served at `/`.
+
+---
+
+## Adding a new UI version
+
+1. Create a directory: `resources/views/versions/v2/`
+2. Add an entry file: `resources/views/versions/v2/index.blade.php`
+3. Open `http://your-app.test/v2` — the new version appears automatically in the dashboard
+
+Versions are auto-detected by scanning `resources/views/versions/` and sorted in descending order (newest first).
+
+---
+
+## Routes registered by the package
+
+| Method | URI | Description |
+|---|---|---|
+| `GET` | `/` | Dashboard — lists all versions and docs |
+| `GET` | `/doc/readme` | Renders `README.md` as HTML |
+| `GET` | `/doc/devlog` | Renders `DEVLOG.md` as HTML |
+| `GET` | `/{version}` | Device-preview wrapper for the version |
+| `GET` | `/{version}?preview=false` | Raw version view without the toolbar |
+
+---
+
+## Customising views
+
+To override the package views, publish them:
+
+```bash
+php artisan vendor:publish --tag=dev-frame-views
+```
+
+Files are copied to `resources/views/vendor/dev-frame/`. Laravel will use these over the package originals automatically.
+
+---
+
+## Rebuilding the CSS (package development only)
+
+The precompiled CSS in `dist/dev-frame.css` is committed to the repository and **does not need to be rebuilt** when installing the package. It only needs rebuilding when the package UI itself is updated.
+
+```bash
+# Requires Node.js + npm
+npm install
+npm run build:dist
+```
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).

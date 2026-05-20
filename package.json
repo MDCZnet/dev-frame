@@ -4,6 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
+        "build:dist": "vite build --config vite.package.config.js && del /f dist\\_entry.js 2>nul; exit 0",
         "dev": "vite"
     },
     "devDependencies": {
