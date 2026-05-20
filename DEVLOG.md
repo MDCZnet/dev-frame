@@ -2,6 +2,17 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 20.05.2026 - Převod na Composer package (mdcznet/dev-frame)
+- Vytvořen `src/DevFrameServiceProvider.php` — registruje views (`dev-frame::`), routes a publikaci assetů.
+- Vytvořen `src/Http/Controllers/DashboardController.php` pod namespace `DevFrame\`.
+- Vytvořen `routes/package.php` — route soubor načítaný Service Providerem; `routes/web.php` odkazuje na něj.
+- Aktualizován `composer.json`: `type: library`, `name: mdcznet/dev-frame`, auto-discovery přes `extra.laravel.providers`.
+- Sestaven `dist/dev-frame.css` — precompilovaný Tailwind CSS bez font souborů; commitován do repozitáře.
+- Přidán `vite.package.config.js` + `resources/js/package-entry.js` pro rebuilding (`npm run build:dist`).
+- Views aktualizovány: `@vite` nahrazen Bunny Fonts CDN linkem + `asset('vendor/dev-frame/dev-frame.css')`.
+- Přidán `public/vendor/` do `.gitignore` (generovaný příkazem `vendor:publish`).
+- Přepsán `README.md` s kompletní instalační a uživatelskou dokumentací v angličtině.
+
 ## 20.05.2026 - Sjednocení designu device-preview toolbaru
 - Přepsán `resources/views/layouts/device-preview.blade.php` — toolbar nyní používá stejnou `slate-950` paletu, Instrument Sans font a SVG ikonky jako dashboard.
 - Tlačítka přepínače zařízení (Desktop/Tablet/Mobil) mají aktivní stav (`bg-slate-700`) konzistentní s ostatním UI.
