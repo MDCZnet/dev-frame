@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $fileName ?? 'Dokumentace' }} · dev-frame</title>
+    <title>{{ $fileName ?? 'Dokumentace' }} · DEV-frame</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('vendor/dev-frame/dev-frame.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/DEV-frame/DEV-frame.css') }}">
 </head>
 <body class="h-full flex bg-slate-50" style="font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;">
 
@@ -16,15 +16,14 @@
         {{-- Brand --}}
         <a href="{{ url('/') }}" class="px-4 h-14 flex items-center border-b border-slate-800/60 hover:bg-slate-900 transition-colors">
             <div class="flex items-center gap-2.5">
-                <div class="w-7 h-7 rounded-lg bg-indigo-500 flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="white">
-                        <rect x="1" y="1" width="5.5" height="5.5" rx="1.2"/>
-                        <rect x="9.5" y="1" width="5.5" height="5.5" rx="1.2"/>
-                        <rect x="1" y="9.5" width="5.5" height="5.5" rx="1.2"/>
-                        <rect x="9.5" y="9.5" width="5.5" height="5.5" rx="1.2"/>
+                <div class="w-7 h-7 rounded-lg bg-slate-700 flex items-center justify-center shrink-0">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4.5,3 1,8 4.5,13"/>
+                        <polyline points="11.5,3 15,8 11.5,13"/>
+                        <line x1="9.5" y1="2.5" x2="6.5" y2="13.5"/>
                     </svg>
                 </div>
-                <span class="text-white font-semibold text-sm tracking-tight">dev-frame</span>
+                <span class="text-white font-semibold text-sm tracking-tight"><span class="text-slate-300">DEV</span>-frame</span>
             </div>
         </a>
 
@@ -71,7 +70,7 @@
 
         {{-- Footer --}}
         <div class="px-4 py-3 border-t border-slate-800/60">
-            <p class="text-[11px] text-slate-600">dev-frame · v0.1</p>
+            <p class="text-[11px] text-slate-600">DEV-frame · v0.1</p>
         </div>
     </aside>
 

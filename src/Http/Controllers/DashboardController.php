@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dev-frame::welcome', ['versions' => $this->getVersions()]);
+        return $this->showDoc('readme');
     }
 
     private function getVersions(): array
