@@ -10,16 +10,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $versionsPath = resource_path('views/versions');
-        $versions = [];
+        return view('dev-frame::welcome', ['versions' => $this->getVersions()]);
+    }
 
-        if (File::exists($versionsPath)) {
-            $directories = File::directories($versionsPath);
-            $versions = array_map('basename', $directories);
-            rsort($versions);
-        }
-
-        return view('dev-frame::welcome', compact('versions'));
+    private function getVersions(): array
+    {
+        $path = resource_path('views/versions');
+        if (!File::exists($path)) return [];
+        $dirs = File::directories($path);
+        $versions = array_map('basename', $dirs);
+        rsort($versions);
+        return $versions;
     }
 
     public function showDoc(string $file)
@@ -38,7 +39,8 @@ class DashboardController extends Controller
         }
 
         $htmlContent = Str::markdown(File::get($path));
+        $versions = $this->getVersions();
 
-        return view('dev-frame::doc', compact('htmlContent', 'fileName'));
+        return view('dev-frame::doc', compact('htmlContent', 'fileName', 'versions'));
     }
 }

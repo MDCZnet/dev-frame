@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dev-frame</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/dev-frame/dev-frame.css') }}">
 </head>
-<body class="h-full flex bg-slate-50" style="font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;">
+<body class="h-full flex bg-slate-50" style="font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;">
 
     {{-- Sidebar --}}
     <aside class="w-56 shrink-0 bg-slate-950 flex flex-col">
@@ -33,16 +33,14 @@
 
             <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-widest px-2 pb-1.5">Dokumentace</p>
 
-            <a href="{{ url('/doc/readme') }}" target="_blank"
-               class="flex items-center gap-2.5 px-2.5 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-sm group">
+            <a href="{{ url('/doc/readme') }}"               class="flex items-center gap-2.5 px-2.5 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-sm group">
                 <svg class="w-4 h-4 shrink-0 text-slate-500 group-hover:text-indigo-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
                 README.md
             </a>
 
-            <a href="{{ url('/doc/devlog') }}" target="_blank"
-               class="flex items-center gap-2.5 px-2.5 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-sm group">
+            <a href="{{ url('/doc/devlog') }}"               class="flex items-center gap-2.5 px-2.5 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-sm group">
                 <svg class="w-4 h-4 shrink-0 text-slate-500 group-hover:text-indigo-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                 </svg>
@@ -91,8 +89,7 @@
                 <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest mb-3">Dokumentace</p>
                 <div class="grid grid-cols-2 gap-4 mb-8">
 
-                    <a href="{{ url('/doc/readme') }}" target="_blank"
-                       class="bg-white rounded-xl border border-slate-200 p-5 hover:border-indigo-300 hover:shadow-md transition-all group">
+                    <a href="{{ url('/doc/readme') }}"                       class="bg-white rounded-xl border border-slate-200 p-5 hover:border-indigo-300 hover:shadow-md transition-all group">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center group-hover:bg-indigo-100 transition-colors">
                                 <svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -107,8 +104,7 @@
                         <span class="text-xs font-medium text-indigo-500 group-hover:text-indigo-600">Otevřít →</span>
                     </a>
 
-                    <a href="{{ url('/doc/devlog') }}" target="_blank"
-                       class="bg-white rounded-xl border border-slate-200 p-5 hover:border-violet-300 hover:shadow-md transition-all group">
+                    <a href="{{ url('/doc/devlog') }}"                       class="bg-white rounded-xl border border-slate-200 p-5 hover:border-violet-300 hover:shadow-md transition-all group">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-9 h-9 rounded-lg bg-violet-50 flex items-center justify-center group-hover:bg-violet-100 transition-colors">
                                 <svg class="w-5 h-5 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

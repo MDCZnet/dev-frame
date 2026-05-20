@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preview – {{ strtoupper($version) }} · dev-frame</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/dev-frame/dev-frame.css') }}">
 </head>
-<body class="h-full flex flex-col bg-slate-50 overflow-hidden" style="font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;">
+<body class="h-full flex flex-col bg-slate-50 overflow-hidden" style="font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;">
 
     {{-- Toolbar --}}
     <header class="bg-slate-950 border-b border-slate-800 h-14 px-4 flex items-center justify-between shrink-0 z-10">
