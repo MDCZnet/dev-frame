@@ -1,46 +1,38 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $fileName ?? 'Dokumentace' }}</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            font-weight: bold;
-        }
-    </style>
+    <title>{{ $fileName ?? 'Dokumentace' }} · dev-frame</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="markdown-content">
-        {!! $htmlContent !!}
-    </div>
+<body class="h-full bg-slate-50" style="font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;">
+
+    {{-- Top bar --}}
+    <header class="bg-white border-b border-slate-200 h-14 px-6 flex items-center gap-4 sticky top-0 z-10">
+        <a href="{{ url('/') }}"
+           class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 transition-colors">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+            </svg>
+            Zpět
+        </a>
+        <span class="text-slate-300">|</span>
+        <span class="text-sm font-medium text-slate-700">{{ $fileName ?? 'Dokumentace' }}</span>
+    </header>
+
+    {{-- Content --}}
+    <main class="max-w-3xl mx-auto px-6 py-10">
+        <article class="prose prose-slate prose-sm max-w-none
+            prose-headings:font-semibold
+            prose-h1:text-2xl prose-h1:text-slate-800
+            prose-h2:text-xl prose-h2:text-slate-700 prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-2
+            prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
+            prose-code:bg-slate-100 prose-code:text-slate-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.85em] prose-code:font-mono
+            prose-pre:bg-slate-900 prose-pre:text-slate-100">
+            {!! $htmlContent !!}
+        </article>
+    </main>
+
 </body>
 </html>

@@ -2,6 +2,23 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 20.05.2026 - Sjednocení designu device-preview toolbaru
+- Přepsán `resources/views/layouts/device-preview.blade.php` — toolbar nyní používá stejnou `slate-950` paletu, Instrument Sans font a SVG ikonky jako dashboard.
+- Tlačítka přepínače zařízení (Desktop/Tablet/Mobil) mají aktivní stav (`bg-slate-700`) konzistentní s ostatním UI.
+- Rámeček zařízení změněn na `#0f172a` (slate-950) pro lepší sladění s tmavým tématem.
+
+## 20.05.2026 - Redesign UI (Dark Sidebar + Light Content)
+- Přepsán `resources/views/welcome.blade.php` — nový layout s tmavým postranním panelem (`bg-slate-950`) a světlým hlavním obsahem, kartičky pro dokumentaci a verze s hover efekty.
+- Přepsán `resources/views/doc.blade.php` — čistý reader s top barem, back tlačítkem a `prose` typografií z `@tailwindcss/typography`.
+- Aktualizován `resources/css/app.css` — přidán `@plugin "@tailwindcss/typography"`.
+- Spuštěn `npm run build`, zkompilován Tailwind CSS + font Instrument Sans.
+
+## 20.05.2026 - Přesun projektu do GitHub repozitáře
+- Inicializován Git repozitář v `c:\laragon\www\mos`.
+- Projekt nahrán do repozitáře [MDCZnet/dev-frame](https://github.com/MDCZnet/dev-frame) na GitHubu.
+- Mergován LICENSE soubor z existujícího vzdáleného repozitáře.
+- Celkem pushováno 67 souborů, větev `main` nastavena jako tracking branch.
+
 ## 20.05.2026 - Drobné úpravy
 - Ze šablony `doc.blade.php` (zobrazení Markdown dokumentace) byl odstraněn odkaz "← Zpět na rozcestník", jelikož se odkazy na dokumentaci automaticky otevírají v nové záložce prohlížeče a odkaz byl zbytečný.
 
