@@ -33,13 +33,16 @@ class WidgetConfigActivity : Activity() {
         setContentView(R.layout.activity_widget_config)
 
         val prefs = getSharedPreferences(QRPaymentWidget.PREFS_NAME, MODE_PRIVATE)
+        val nameEdit = findViewById(R.id.name_edit) as EditText
         val accountEdit = findViewById(R.id.account_edit) as EditText
         val ibanPreview = findViewById(R.id.iban_preview) as TextView
         val saveButton = findViewById(R.id.save_button) as Button
         val cancelButton = findViewById(R.id.cancel_button) as Button
 
-        val existing = prefs.getString("account_$widgetId", "") ?: ""
-        if (existing.isNotEmpty()) accountEdit.setText(existing)
+        nameEdit.setText(prefs.getString("name_$widgetId", "") ?: "")
+
+        val existingAccount = prefs.getString("account_$widgetId", "") ?: ""
+        if (existingAccount.isNotEmpty()) accountEdit.setText(existingAccount)
 
         accountEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -73,7 +76,12 @@ class WidgetConfigActivity : Activity() {
                 return@setOnClickListener
             }
 
-            prefs.edit().putString("account_$widgetId", iban).apply()
+            val name = nameEdit.text.toString().trim()
+
+            prefs.edit()
+                .putString("account_$widgetId", iban)
+                .putString("name_$widgetId", name)
+                .apply()
 
             val appWidgetManager = AppWidgetManager.getInstance(this)
             QRPaymentWidget.updateWidget(this, appWidgetManager, widgetId)

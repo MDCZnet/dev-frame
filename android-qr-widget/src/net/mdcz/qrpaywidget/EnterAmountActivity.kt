@@ -52,10 +52,12 @@ class EnterAmountActivity : Activity() {
             }
 
             val formattedAmount = "%.2f".format(amountText.toDouble())
+            val name = prefs.getString("name_$widgetId", "") ?: ""
 
             val showQRIntent = Intent(this, ShowQRActivity::class.java).apply {
                 putExtra("amount", formattedAmount)
                 putExtra("account", accountNumber)
+                putExtra("name", name)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
             startActivity(showQRIntent)

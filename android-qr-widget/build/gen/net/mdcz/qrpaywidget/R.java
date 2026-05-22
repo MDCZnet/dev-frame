@@ -11,20 +11,22 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
-        public static final int account_edit=0x7f050008;
+        public static final int account_edit=0x7f050009;
         public static final int account_text=0x7f050004;
         public static final int amount_edit=0x7f050000;
         public static final int amount_text=0x7f050003;
         public static final int cancel_button=0x7f050001;
         public static final int close_button=0x7f050007;
-        public static final int iban_preview=0x7f050009;
+        public static final int iban_preview=0x7f05000a;
+        public static final int name_edit=0x7f050008;
         public static final int ok_button=0x7f050002;
         public static final int qr_image=0x7f050005;
-        public static final int save_button=0x7f05000a;
+        public static final int save_button=0x7f05000b;
         public static final int share_button=0x7f050006;
-        public static final int widget_no_account=0x7f05000d;
-        public static final int widget_qr_image=0x7f05000c;
-        public static final int widget_root=0x7f05000b;
+        public static final int widget_label=0x7f05000f;
+        public static final int widget_no_account=0x7f05000e;
+        public static final int widget_qr_image=0x7f05000d;
+        public static final int widget_root=0x7f05000c;
     }
     public static final class layout {
         public static final int activity_enter_amount=0x7f020000;
@@ -35,20 +37,20 @@ public final class R {
     public static final class string {
         public static final int account_hint_detail=0x7f040004;
         public static final int account_number_hint=0x7f040003;
-        public static final int account_saved=0x7f04000f;
-        public static final int amount_hint=0x7f040008;
+        public static final int account_saved=0x7f040010;
+        public static final int amount_hint=0x7f040009;
         public static final int app_name=0x7f040000;
-        public static final int cancel_button=0x7f040006;
+        public static final int cancel_button=0x7f040007;
         public static final int config_title=0x7f040002;
-        public static final int enter_amount=0x7f040007;
-        public static final int invalid_account_error=0x7f04000e;
-        public static final int invalid_amount_error=0x7f04000d;
-        public static final int no_account_error=0x7f04000c;
-        public static final int ok_button=0x7f040009;
-        public static final int payment_qr=0x7f04000b;
-        public static final int qr_widget_label=0x7f040010;
-        public static final int save_button=0x7f040005;
-        public static final int share_button=0x7f04000a;
+        public static final int enter_amount=0x7f040008;
+        public static final int invalid_account_error=0x7f04000f;
+        public static final int invalid_amount_error=0x7f04000e;
+        public static final int name_hint=0x7f040005;
+        public static final int no_account_error=0x7f04000d;
+        public static final int ok_button=0x7f04000a;
+        public static final int payment_qr=0x7f04000c;
+        public static final int save_button=0x7f040006;
+        public static final int share_button=0x7f04000b;
         public static final int widget_name=0x7f040001;
     }
     public static final class xml {

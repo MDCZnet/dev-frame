@@ -21,6 +21,7 @@ class QRPaymentWidget : AppWidgetProvider() {
         val editor = prefs.edit()
         for (id in appWidgetIds) {
             editor.remove("account_$id")
+            editor.remove("name_$id")
         }
         editor.apply()
     }
@@ -44,6 +45,10 @@ class QRPaymentWidget : AppWidgetProvider() {
 
             val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             val account = prefs.getString("account_$widgetId", "") ?: ""
+            val name = prefs.getString("name_$widgetId", "") ?: ""
+
+            val label = if (name.isNotEmpty()) "QR Platba - $name" else "QR Platba"
+            views.setTextViewText(R.id.widget_label, label)
 
             if (account.isNotEmpty()) {
                 val spdString = QRCodeHelper.buildSPD(account)

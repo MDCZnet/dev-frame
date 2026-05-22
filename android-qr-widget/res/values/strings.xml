@@ -2,19 +2,19 @@
 <resources>
     <string name="app_name">QR Platba Widget</string>
     <string name="widget_name">QR Platba</string>
-    <string name="config_title">Nastavení QR Platba</string>
+    <string name="config_title">Nastavení pro widget QR Platba</string>
     <string name="account_number_hint">Číslo účtu (IBAN nebo CZ formát)</string>
     <string name="account_hint_detail">IBAN: CZ6508000000192000145399\nnebo CZ formát: 123456-1234567890/0800</string>
+    <string name="name_hint">Název (volitelný)</string>
     <string name="save_button">Uložit</string>
     <string name="cancel_button">Zavřít</string>
     <string name="enter_amount">Zadat částku</string>
     <string name="amount_hint">Částka v Kč</string>
     <string name="ok_button">Zobrazit QR</string>
-    <string name="share_button">Sdílet QR</string>
+    <string name="share_button">Generovat</string>
     <string name="payment_qr">QR Platba</string>
     <string name="no_account_error">Nejdříve nastavte číslo účtu v nastavení widgetu</string>
     <string name="invalid_amount_error">Zadejte platnou částku</string>
     <string name="invalid_account_error">Neplatný formát čísla účtu</string>
-    <string name="account_saved">Číslo účtu uloženo</string>
-    <string name="qr_widget_label">&#9638; QR\nPlatba</string>
+    <string name="account_saved">Nastavení uloženo</string>
 </resources>
