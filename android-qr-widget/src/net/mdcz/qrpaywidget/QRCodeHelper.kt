@@ -32,6 +32,7 @@ object QRCodeHelper {
         val sb = StringBuilder("SPD*1.0*ACC:$iban")
         if (amount.isNotEmpty()) sb.append("*AM:$amount")
         sb.append("*CC:CZK")
+        sb.append("*PT:IP")
         if (message.isNotEmpty()) sb.append("*MSG:$message")
         return sb.toString()
     }
