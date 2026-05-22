@@ -92,6 +92,35 @@ npm run build:dist
 
 ---
 
+## Android QR Platba Widget
+
+Adresář `android-qr-widget/` obsahuje samostatný Android widget pro rychlé generování platebních QR kódů (formát CZ SPD).
+
+### Funkce
+
+- **Widget na ploše** — jednoduchý 2×1 widget, kliknutím otevře zadání částky
+- **QR Platba** — generuje standardní český platební QR kód (formát `SPD*1.0*ACC:IBAN*AM:částka*CC:CZK`)
+- **Sdílení** — QR kód lze sdílet do libovolné aplikace přes systémový Android chooser
+- **Nastavení** — číslo účtu zadáte v nastavení widgetu (IBAN nebo CZ formát `123456-1234567890/0800`)
+
+### Instalace (manuální sideload)
+
+1. Stáhněte `android-qr-widget/qr-platba-widget.apk` do telefonu
+2. V nastavení povolte instalaci z neznámých zdrojů
+3. Nainstalujte APK
+4. Přidejte widget „QR Platba" na plochu — zobrazí se dialog nastavení čísla účtu
+
+### Build ze zdroje
+
+```bash
+cd android-qr-widget
+bash build.sh
+```
+
+Požadavky: Java 8+, `kotlinc`, `aapt`, `dalvik-exchange` (dx), `apksigner`, `zipalign`.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

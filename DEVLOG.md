@@ -2,6 +2,30 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 22.05.2026 - Android QR Platba Widget (APK)
+
+Vytvořen kompletní Android widget pro generování platebních QR kódů (CZ SPD formát).
+
+### Vytvořené soubory (`android-qr-widget/`)
+
+- **`AndroidManifest.xml`** — manifest aplikace: deklarace widgetu, aktivit, poskytovatele souborů
+- **`build.sh`** — build skript (aapt → kotlinc → dx → zipalign → apksigner)
+- **`libs/zxing-core.jar`** — ZXing 3.5.2 pro generování QR kódů
+- **`res/layout/widget_layout.xml`** — layout widgetu na ploše (2×1 buňky, modrý)
+- **`res/layout/activity_enter_amount.xml`** — dialog zadání částky
+- **`res/layout/activity_show_qr.xml`** — zobrazení QR kódu + tlačítko sdílení
+- **`res/layout/activity_widget_config.xml`** — nastavení čísla účtu
+- **`res/xml/widget_info.xml`** — metadata AppWidget provideru
+- **`res/values/strings.xml`** — české lokalizační řetězce
+- **`src/.../QRPaymentWidget.kt`** — AppWidgetProvider (klik → zadání částky)
+- **`src/.../EnterAmountActivity.kt`** — zadání částky, validace, spuštění QR aktivity
+- **`src/.../ShowQRActivity.kt`** — zobrazení QR kódu, sdílení přes systémový chooser
+- **`src/.../WidgetConfigActivity.kt`** — nastavení + konverze CZ čísla účtu na IBAN
+- **`src/.../IBANConverter.kt`** — převod CZ formátu (123456-1234567890/0800) na IBAN
+- **`src/.../QRCodeHelper.kt`** — generování QR Bitmap přes ZXing, sestavení SPD řetězce
+- **`src/.../QRFileProvider.kt`** — vlastní ContentProvider pro sdílení QR obrázku
+- **`qr-platba-widget.apk`** — výsledný APK (minSdk 21, targetSdk 23, podepsán v1+v2+v3)
+
 ## 20.05.2026 - Převod na Composer package (mdcznet/dev-frame)
 - Vytvořen `src/DevFrameServiceProvider.php` — registruje views (`dev-frame::`), routes a publikaci assetů.
 - Vytvořen `src/Http/Controllers/DashboardController.php` pod namespace `DevFrame\`.
