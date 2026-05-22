@@ -39,7 +39,7 @@ class QRPaymentWidget : AppWidgetProvider() {
 
             val pendingIntent = PendingIntent.getActivity(
                 context, widgetId, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             views.setOnClickPendingIntent(R.id.widget_root, pendingIntent)
 

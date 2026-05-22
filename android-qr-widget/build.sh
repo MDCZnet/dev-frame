@@ -9,6 +9,7 @@ PACKAGE="net.mdcz.qrpaywidget"
 PACKAGE_PATH="net/mdcz/qrpaywidget"
 OUT="build"
 APK_NAME="qr-platba-widget.apk"
+RELEASE_KEYSTORE="release.keystore"
 
 echo "=== QR Platba Widget Build ==="
 
@@ -52,25 +53,27 @@ cd "$OUT/dex" && zip -0 "../unsigned.apk" classes.dex && cd ../..
 
 zipalign -f 4 "$OUT/unsigned.apk" "$OUT/aligned.apk"
 
-echo "[6/6] Podepisování APK..."
-KEYSTORE="$OUT/debug.keystore"
-if [ ! -f "$KEYSTORE" ]; then
+echo "[6/6] Podepisování APK (release key)..."
+if [ ! -f "$RELEASE_KEYSTORE" ]; then
+    echo "  Generuji release keystore..."
     keytool -genkey -v \
-        -keystore "$KEYSTORE" \
-        -alias android \
+        -keystore "$RELEASE_KEYSTORE" \
+        -alias qrplatba \
         -keyalg RSA \
         -keysize 2048 \
         -validity 10000 \
-        -storepass android123 \
-        -keypass android123 \
-        -dname "CN=QR Platba,O=MDCZnet,C=CZ" 2>/dev/null
+        -storepass "$(cat .keystore_pass 2>/dev/null || echo 'qrplatba2024')" \
+        -keypass "$(cat .keystore_pass 2>/dev/null || echo 'qrplatba2024')" \
+        -dname "CN=QR Platba,O=MDCZnet,L=Prague,ST=Prague,C=CZ" 2>/dev/null
 fi
 
+KSPASS="$(cat .keystore_pass 2>/dev/null || echo 'qrplatba2024')"
+
 apksigner sign \
-    --ks "$KEYSTORE" \
-    --ks-pass pass:android123 \
-    --key-pass pass:android123 \
-    --ks-key-alias android \
+    --ks "$RELEASE_KEYSTORE" \
+    --ks-pass "pass:$KSPASS" \
+    --key-pass "pass:$KSPASS" \
+    --ks-key-alias qrplatba \
     --out "$APK_NAME" \
     "$OUT/aligned.apk"
 
@@ -78,3 +81,5 @@ echo ""
 echo "=== HOTOVO ==="
 echo "APK: $(pwd)/$APK_NAME"
 ls -lh "$APK_NAME"
+echo ""
+echo "Play Store 512x512 ikona: $(ls -lh /tmp/icon_512.png 2>/dev/null || echo 'neni k dispozici - spustte znovu')"
