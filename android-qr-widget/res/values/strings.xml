@@ -10,8 +10,8 @@
     <string name="cancel_button">Zavřít</string>
     <string name="enter_amount">Zadat částku</string>
     <string name="amount_hint">Částka v Kč</string>
-    <string name="ok_button">Zobrazit QR</string>
-    <string name="share_button">Generovat</string>
+    <string name="ok_button">Generovat</string>
+    <string name="share_button">Sdílet</string>
     <string name="payment_qr">QR Platba</string>
     <string name="no_account_error">Nejdříve nastavte číslo účtu v nastavení widgetu</string>
     <string name="invalid_amount_error">Zadejte platnou částku</string>
