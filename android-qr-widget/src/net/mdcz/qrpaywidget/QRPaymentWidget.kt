@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetProvider
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.RemoteViews
 
 class QRPaymentWidget : AppWidgetProvider() {
@@ -39,8 +40,22 @@ class QRPaymentWidget : AppWidgetProvider() {
                 context, widgetId, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
-
             views.setOnClickPendingIntent(R.id.widget_root, pendingIntent)
+
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val account = prefs.getString("account_$widgetId", "") ?: ""
+
+            if (account.isNotEmpty()) {
+                val spdString = QRCodeHelper.buildSPD(account)
+                val qrBitmap = QRCodeHelper.generateQR(spdString, 256)
+                views.setImageViewBitmap(R.id.widget_qr_image, qrBitmap)
+                views.setViewVisibility(R.id.widget_qr_image, View.VISIBLE)
+                views.setViewVisibility(R.id.widget_no_account, View.GONE)
+            } else {
+                views.setViewVisibility(R.id.widget_qr_image, View.GONE)
+                views.setViewVisibility(R.id.widget_no_account, View.VISIBLE)
+            }
+
             appWidgetManager.updateAppWidget(widgetId, views)
         }
     }

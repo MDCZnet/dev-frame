@@ -22,6 +22,8 @@ public final class R {
         public static final int qr_image=0x7f050005;
         public static final int save_button=0x7f05000a;
         public static final int share_button=0x7f050006;
+        public static final int widget_no_account=0x7f05000d;
+        public static final int widget_qr_image=0x7f05000c;
         public static final int widget_root=0x7f05000b;
     }
     public static final class layout {
