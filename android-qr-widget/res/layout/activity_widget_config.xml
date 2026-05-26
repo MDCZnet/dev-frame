@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zadejte číslo účtu příjemce platby.\n\nFormáty:\n• IBAN: CZ6508000000192000145399\n• CZ formát: 123456-1234567890/0800\n• Zkrácený: 1234567890/0800"
+        android:text="Formáty:\n• IBAN: CZ6508000000192000145399\n• CZ formát: 123456-1234567890/0800\n• Zkrácený: 1234567890/0800"
         android:textSize="13sp"
         android:textColor="#616161"
         android:layout_marginBottom="12dp" />

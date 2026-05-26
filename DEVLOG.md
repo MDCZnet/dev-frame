@@ -2,6 +2,19 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 26.05.2026 - Oprava ikony a úprava konfiguračního dialogu
+
+### Změněné soubory
+- `android-qr-widget/res/mipmap-*/ic_launcher.png` – přegenerovány ze zdroje `icon_play_store_512.png` (oprava: zobrazovalo se jen modré kolečko)
+- `android-qr-widget/res/mipmap-*/ic_launcher_round.png` – totéž pro kulatou variantu
+- `android-qr-widget/res/mipmap-anydpi-v26/ic_launcher.xml` – odstraněno (adaptive icon měl prázdný foreground placeholder → blue circle bug)
+- `android-qr-widget/res/mipmap-anydpi-v26/ic_launcher_round.xml` – odstraněno
+- `android-qr-widget/res/values/strings.xml` – `config_title` změněn z "Nastavení pro widget QR Platba" na "Zadejte číslo účtu příjemce platby"
+- `android-qr-widget/res/layout/activity_widget_config.xml` – odstraněna duplicitní věta "Zadejte číslo účtu příjemce platby." ze druhého TextView
+- `android-qr-widget/qr-platba-widget.apk` – nové APK
+
+---
+
 ## 22.05.2026 - Android QR Platba Widget (APK)
 
 Vytvořen kompletní Android widget pro generování platebních QR kódů (CZ SPD formát).

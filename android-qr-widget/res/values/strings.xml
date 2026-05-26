@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">QR Platba Widget</string>
     <string name="widget_name">QR Platba</string>
-    <string name="config_title">Nastavení pro widget QR Platba</string>
+    <string name="config_title">Zadejte číslo účtu příjemce platby</string>
     <string name="account_number_hint">Číslo účtu (IBAN nebo CZ formát)</string>
     <string name="account_hint_detail">IBAN: CZ6508000000192000145399\nnebo CZ formát: 123456-1234567890/0800</string>
     <string name="name_hint">Název (volitelný)</string>
