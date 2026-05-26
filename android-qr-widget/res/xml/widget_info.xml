@@ -5,6 +5,5 @@
     android:minResizeWidth="74dp"
     android:minResizeHeight="74dp"
     android:updatePeriodMillis="0"
-    android:configure="net.mdcz.qrpaywidget.WidgetConfigActivity"
     android:initialLayout="@layout/widget_layout"
     android:resizeMode="horizontal|vertical" />
