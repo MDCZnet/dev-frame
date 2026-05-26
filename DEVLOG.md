@@ -2,6 +2,20 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 26.05.2026 - Přidání ikony aplikace s automatickým přidáním widgetu
+
+### Popis
+Přidána `MainActivity` jako launcher aktivita — kliknutí na ikonu aplikace spustí systémový dialog pro přidání widgetu na plochu (`AppWidgetManager.requestPinAppWidget` přes reflection, API 26+). Na starších zařízeních se zobrazí toast s návodem pro ruční přidání.
+
+### Změněné soubory
+- `android-qr-widget/src/net/mdcz/qrpaywidget/MainActivity.kt` – nový soubor, launcher aktivita
+- `android-qr-widget/AndroidManifest.xml` – přidána MainActivity s LAUNCHER intent-filter, versionCode 7, versionName 1.6
+- `android-qr-widget/res/values/strings.xml` – přidán string `add_widget_manual`
+- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB (verze 7)
+- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 7)
+
+---
+
 ## 26.05.2026 - Oprava: widget nešel přidat na plochu (aapt vs aapt2 resource ID mismatch)
 
 ### Popis

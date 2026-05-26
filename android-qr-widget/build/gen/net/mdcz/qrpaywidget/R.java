@@ -44,21 +44,22 @@ public final class R {
     public static final int account_hint_detail=0x7f050000;
     public static final int account_number_hint=0x7f050001;
     public static final int account_saved=0x7f050002;
-    public static final int amount_hint=0x7f050003;
-    public static final int app_name=0x7f050004;
-    public static final int cancel_button=0x7f050005;
-    public static final int config_account_prompt=0x7f050006;
-    public static final int config_title=0x7f050007;
-    public static final int enter_amount=0x7f050008;
-    public static final int invalid_account_error=0x7f050009;
-    public static final int invalid_amount_error=0x7f05000a;
-    public static final int name_hint=0x7f05000b;
-    public static final int no_account_error=0x7f05000c;
-    public static final int ok_button=0x7f05000d;
-    public static final int payment_qr=0x7f05000e;
-    public static final int save_button=0x7f05000f;
-    public static final int share_button=0x7f050010;
-    public static final int widget_name=0x7f050011;
+    public static final int add_widget_manual=0x7f050003;
+    public static final int amount_hint=0x7f050004;
+    public static final int app_name=0x7f050005;
+    public static final int cancel_button=0x7f050006;
+    public static final int config_account_prompt=0x7f050007;
+    public static final int config_title=0x7f050008;
+    public static final int enter_amount=0x7f050009;
+    public static final int invalid_account_error=0x7f05000a;
+    public static final int invalid_amount_error=0x7f05000b;
+    public static final int name_hint=0x7f05000c;
+    public static final int no_account_error=0x7f05000d;
+    public static final int ok_button=0x7f05000e;
+    public static final int payment_qr=0x7f05000f;
+    public static final int save_button=0x7f050010;
+    public static final int share_button=0x7f050011;
+    public static final int widget_name=0x7f050012;
   }
   public static final class xml {
     public static final int network_security_config=0x7f060000;

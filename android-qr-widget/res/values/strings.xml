@@ -17,5 +17,6 @@
     <string name="no_account_error">Nejdříve nastavte číslo účtu v nastavení widgetu</string>
     <string name="invalid_amount_error">Zadejte platnou částku</string>
     <string name="invalid_account_error">Neplatný formát čísla účtu</string>
+    <string name="add_widget_manual">Přidejte widget podržením prstu na ploše a vyberte Widgety</string>
     <string name="account_saved">Nastavení uloženo</string>
 </resources>
