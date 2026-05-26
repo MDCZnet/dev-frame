@@ -2,6 +2,21 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 26.05.2026 - Oprava: widget nešel přidat na plochu (aapt vs aapt2 resource ID mismatch)
+
+### Popis
+Widget zmizel po přidání na plochu, protože build skript generoval R.java přes starý `aapt`, ale AAB resources přes `aapt2`. Tyto nástroje přiřazují různá resource ID — DEX kód hledal layout pod jiným ID než ho měl AAB → crash → widget zmizel.
+
+Oprava: celý build nyní používá konzistentně `aapt2`. R.java se generuje přes `aapt2 link --java`, čímž jsou ID v DEX i v resources.pb shodná.
+
+### Změněné soubory
+- `android-qr-widget/build.sh` – kroky 1-2 přepsány: `aapt package` nahrazen `aapt2 compile` + `aapt2 link --java`
+- `android-qr-widget/AndroidManifest.xml` – `versionCode` 3 → 4, `versionName` 1.2 → 1.3
+- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB (verze 4)
+- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 4)
+
+---
+
 ## 26.05.2026 - Zvýšení targetSdkVersion na 35 pro Google Play
 
 ### Popis
