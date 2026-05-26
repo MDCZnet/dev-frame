@@ -2,6 +2,22 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 26.05.2026 - Zvýšení targetSdkVersion na 35 pro Google Play
+
+### Popis
+Oprava chyby při nahrávání AAB do Google Play Console pro interní testování. Google Play vyžaduje od nových uploadů minimálně `targetSdkVersion=35`.
+
+### Změněné soubory
+- `android-qr-widget/AndroidManifest.xml` – `targetSdkVersion` zvýšen z 34 na 35, `versionCode` z 2 na 3, `versionName` z 1.1 na 1.2
+- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB bundle (verze 3)
+- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 3)
+
+### Zbývající varování z Play Console (není třeba opravovat kódem)
+- **Žádní testeři** – přidat v Play Console → Interní testování → Testeři
+- **Chybí deobfuskační soubor** – app nepoužívá R8/ProGuard, varování lze ignorovat
+
+---
+
 ## 26.05.2026 - Oprava ikony a úprava konfiguračního dialogu
 
 ### Změněné soubory
