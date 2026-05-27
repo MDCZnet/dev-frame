@@ -2,87 +2,15 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
-## 26.05.2026 - Přidání ikony aplikace s automatickým přidáním widgetu
+## 27.05.2026 - Přesun Android aplikace do vlastního repozitáře
 
-### Popis
-Přidána `MainActivity` jako launcher aktivita — kliknutí na ikonu aplikace spustí systémový dialog pro přidání widgetu na plochu (`AppWidgetManager.requestPinAppWidget` přes reflection, API 26+). Na starších zařízeních se zobrazí toast s návodem pro ruční přidání.
-
-### Změněné soubory
-- `android-qr-widget/src/net/mdcz/qrpaywidget/MainActivity.kt` – nový soubor, launcher aktivita
-- `android-qr-widget/AndroidManifest.xml` – přidána MainActivity s LAUNCHER intent-filter, versionCode 7, versionName 1.6
-- `android-qr-widget/res/values/strings.xml` – přidán string `add_widget_manual`
-- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB (verze 7)
-- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 7)
-
----
-
-## 26.05.2026 - Oprava: widget nešel přidat na plochu (aapt vs aapt2 resource ID mismatch)
-
-### Popis
-Widget zmizel po přidání na plochu, protože build skript generoval R.java přes starý `aapt`, ale AAB resources přes `aapt2`. Tyto nástroje přiřazují různá resource ID — DEX kód hledal layout pod jiným ID než ho měl AAB → crash → widget zmizel.
-
-Oprava: celý build nyní používá konzistentně `aapt2`. R.java se generuje přes `aapt2 link --java`, čímž jsou ID v DEX i v resources.pb shodná.
+Android QR Platba Widget přesunut do samostatného repozitáře `MDCZnet/android-qr-platba`. Z dev-frame odstraněna složka `android-qr-widget/` a soubor `public/privacy-policy.html`.
 
 ### Změněné soubory
-- `android-qr-widget/build.sh` – kroky 1-2 přepsány: `aapt package` nahrazen `aapt2 compile` + `aapt2 link --java`
-- `android-qr-widget/AndroidManifest.xml` – `versionCode` 3 → 4, `versionName` 1.2 → 1.3
-- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB (verze 4)
-- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 4)
+- `android-qr-widget/` – odstraněna celá složka (přesunuta do MDCZnet/android-qr-platba)
+- `public/privacy-policy.html` – odstraněno (přesunuto do MDCZnet/android-qr-platba)
 
 ---
-
-## 26.05.2026 - Zvýšení targetSdkVersion na 35 pro Google Play
-
-### Popis
-Oprava chyby při nahrávání AAB do Google Play Console pro interní testování. Google Play vyžaduje od nových uploadů minimálně `targetSdkVersion=35`.
-
-### Změněné soubory
-- `android-qr-widget/AndroidManifest.xml` – `targetSdkVersion` zvýšen z 34 na 35, `versionCode` z 2 na 3, `versionName` z 1.1 na 1.2
-- `android-qr-widget/qr-platba-widget.aab` – přestavěný AAB bundle (verze 3)
-- `android-qr-widget/qr-platba-widget.apk` – přestavěné APK (verze 3)
-
-### Zbývající varování z Play Console (není třeba opravovat kódem)
-- **Žádní testeři** – přidat v Play Console → Interní testování → Testeři
-- **Chybí deobfuskační soubor** – app nepoužívá R8/ProGuard, varování lze ignorovat
-
----
-
-## 26.05.2026 - Oprava ikony a úprava konfiguračního dialogu
-
-### Změněné soubory
-- `android-qr-widget/res/mipmap-*/ic_launcher.png` – přegenerovány ze zdroje `icon_play_store_512.png` (oprava: zobrazovalo se jen modré kolečko)
-- `android-qr-widget/res/mipmap-*/ic_launcher_round.png` – totéž pro kulatou variantu
-- `android-qr-widget/res/mipmap-anydpi-v26/ic_launcher.xml` – odstraněno (adaptive icon měl prázdný foreground placeholder → blue circle bug)
-- `android-qr-widget/res/mipmap-anydpi-v26/ic_launcher_round.xml` – odstraněno
-- `android-qr-widget/res/values/strings.xml` – `config_title` změněn z "Nastavení pro widget QR Platba" na "Zadejte číslo účtu příjemce platby"
-- `android-qr-widget/res/layout/activity_widget_config.xml` – odstraněna duplicitní věta "Zadejte číslo účtu příjemce platby." ze druhého TextView
-- `android-qr-widget/qr-platba-widget.apk` – nové APK
-
----
-
-## 22.05.2026 - Android QR Platba Widget (APK)
-
-Vytvořen kompletní Android widget pro generování platebních QR kódů (CZ SPD formát).
-
-### Vytvořené soubory (`android-qr-widget/`)
-
-- **`AndroidManifest.xml`** — manifest aplikace: deklarace widgetu, aktivit, poskytovatele souborů
-- **`build.sh`** — build skript (aapt → kotlinc → dx → zipalign → apksigner)
-- **`libs/zxing-core.jar`** — ZXing 3.5.2 pro generování QR kódů
-- **`res/layout/widget_layout.xml`** — layout widgetu na ploše (2×1 buňky, modrý)
-- **`res/layout/activity_enter_amount.xml`** — dialog zadání částky
-- **`res/layout/activity_show_qr.xml`** — zobrazení QR kódu + tlačítko sdílení
-- **`res/layout/activity_widget_config.xml`** — nastavení čísla účtu
-- **`res/xml/widget_info.xml`** — metadata AppWidget provideru
-- **`res/values/strings.xml`** — české lokalizační řetězce
-- **`src/.../QRPaymentWidget.kt`** — AppWidgetProvider (klik → zadání částky)
-- **`src/.../EnterAmountActivity.kt`** — zadání částky, validace, spuštění QR aktivity
-- **`src/.../ShowQRActivity.kt`** — zobrazení QR kódu, sdílení přes systémový chooser
-- **`src/.../WidgetConfigActivity.kt`** — nastavení + konverze CZ čísla účtu na IBAN
-- **`src/.../IBANConverter.kt`** — převod CZ formátu (123456-1234567890/0800) na IBAN
-- **`src/.../QRCodeHelper.kt`** — generování QR Bitmap přes ZXing, sestavení SPD řetězce
-- **`src/.../QRFileProvider.kt`** — vlastní ContentProvider pro sdílení QR obrázku
-- **`qr-platba-widget.apk`** — výsledný APK (minSdk 21, targetSdk 23, podepsán v1+v2+v3)
 
 ## 20.05.2026 - Převod na Composer package (mdcznet/dev-frame)
 - Vytvořen `src/DevFrameServiceProvider.php` — registruje views (`dev-frame::`), routes a publikaci assetů.
