@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npx tailwindcss *)",
+      "PowerShell(node_modules\\\\.bin\\\\vite.cmd build --config vite.package.config.js 2>&1)",
+      "Bash(dir c:\\\\laragon\\\\www\\\\mos /b)"
     ]
   }
 }

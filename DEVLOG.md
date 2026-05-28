@@ -2,6 +2,12 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 28.05.2026 - Přidán setup.bat instalační skript
+- Vytvořen `setup.bat` — jednorázový skript pro zprovoznění projektu po klonování/rozbalení na Windows (Laragon).
+- Kontroluje dostupnost PHP, Composer, Node.js a npm v PATH.
+- Automaticky nastaví `APP_URL` v `.env` podle názvu složky projektu (formát `http://[složka].test`).
+- Provede `composer install`, `key:generate`, vytvoří `database/database.sqlite`, spustí migrace, `npm install` a `npm run build`.
+
 ## 20.05.2026 - Převod na Composer package (mdcznet/dev-frame)
 - Vytvořen `src/DevFrameServiceProvider.php` — registruje views (`dev-frame::`), routes a publikaci assetů.
 - Vytvořen `src/Http/Controllers/DashboardController.php` pod namespace `DevFrame\`.
