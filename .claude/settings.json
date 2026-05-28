@@ -6,7 +6,9 @@
       "Bash(git push *)",
       "Bash(npx tailwindcss *)",
       "PowerShell(node_modules\\\\.bin\\\\vite.cmd build --config vite.package.config.js 2>&1)",
-      "Bash(dir c:\\\\laragon\\\\www\\\\mos /b)"
+      "Bash(dir c:\\\\laragon\\\\www\\\\mos /b)",
+      "Bash(ls c:/laragon/www/dev-frame/public/build/assets/)",
+      "Read(//c/laragon/www/dev-frame/public/build/assets/**)"
     ]
   }
 }
