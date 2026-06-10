@@ -2,6 +2,13 @@
 
 Zde jsou zaznamenány veškeré implementační kroky a architektura vytvořeného multi-verze rozcestníku.
 
+## 10.06.2026 - Workflow pro nasazení bez Node.js na serveru
+
+- Odebráno `public/build` z `.gitignore` — zkompilované assets jsou nyní commitovány do repozitáře.
+- Vytvořen `build-and-push.bat` — lokální skript: spustí `npm run build`, commitne `public/build` a pushne na GitHub. Varuje před necommitovanými změnami.
+- Upraven `deploy.bat` — server již nevyžaduje Node.js ani npm. Provede pouze `git pull`, `composer install --no-dev`, `vendor:publish`, `migrate --force` a cache optimalizace.
+- Workflow: lokálně `build-and-push.bat` → na serveru `deploy.bat`.
+
 ## 28.05.2026 - Přidán setup.bat instalační skript
 - Vytvořen `setup.bat` — jednorázový skript pro zprovoznění projektu po klonování/rozbalení na Windows (Laragon).
 - Kontroluje dostupnost PHP, Composer, Node.js a npm v PATH.
